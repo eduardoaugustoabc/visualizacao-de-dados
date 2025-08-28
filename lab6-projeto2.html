@@ -1,0 +1,63 @@
+option = {
+  title: {
+    text: 'Variação da chuva acumulada por ano (2015 a 2024)',
+    subtext: 'Fazenda Carnaúba - Taperoá - PB',
+    left: 'center'
+  },
+  tooltip: {
+    trigger: 'axis',
+    formatter: function (params) {
+      const valor = params[0].data;
+      const sinal = valor > 0 ? '+' : '';
+      return `${params[0].axisValue}: <b>${sinal}${valor.toFixed(1)} mm</b>`;
+    }
+  },
+  toolbox: {
+    feature: {
+      saveAsImage: { title: 'Salvar' }
+    }
+  },
+  dataZoom: [
+    { type: 'slider', start: 0, end: 100 },
+    { type: 'inside' }
+  ],
+  xAxis: {
+    type: 'category',
+    name: 'Ano',
+    data: ['2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023', '2024']
+  },
+  yAxis: {
+    type: 'value',
+    name: 'Variação (mm)',
+    min: -500,
+    max: 600
+  },
+  visualMap: {
+  show: true,
+  type: 'piecewise',
+  seriesIndex: 0,
+  pieces: [
+    { lt: 0, label: 'Variação negativa', color: '#d94e5d' },
+    { gte: 0, label: 'Variação positiva', color: '#2a9d8f' } 
+  ],
+  bottom: 30
+},
+  series: [
+    {
+      name: 'Variação da chuva',
+      type: 'bar',
+      data: [-91.7, -83.5, 553.3, -266.9, 93.4, -202.8, 550.1, -473.0, -87.4],
+      itemStyle: {
+        borderRadius: [5, 5, 0, 0]
+      },
+      label: {
+        show: true,
+        position: 'top',
+        formatter: function (params) {
+          const v = params.data;
+          return (v > 0 ? '+' : '') + v.toFixed(1) + ' mm';
+        }
+      }
+    }
+  ]
+};
