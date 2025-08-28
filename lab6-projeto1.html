@@ -1,0 +1,68 @@
+option = {
+  title: {
+    text: 'Volume de chuva acumulada por ano (2015 a 2024)',
+    subtext: 'Fazenda Carnaúba - Taperoá - PB',
+    left: 'center'
+  },
+  tooltip: {
+    trigger: 'axis',
+    formatter: function (params) {
+      return `${params[0].axisValue}: <b>${params[0].data} mm</b>`;
+    }
+  },
+  legend: {
+    show: false
+  },
+  grid: {
+    left: '5%',
+    right: '5%',
+    bottom: '15%',
+    containLabel: true
+  },
+  toolbox: {
+    feature: {
+      saveAsImage: { title: 'Salvar como imagem' }
+    }
+  },
+  dataZoom: [
+    {
+      type: 'slider',
+      start: 0,
+      end: 100
+    },
+    {
+      type: 'inside'
+    }
+  ],
+  xAxis: {
+    type: 'category',
+    boundaryGap: false,
+    name: 'Ano',
+    data: ['2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023', '2024']
+  },
+  yAxis: {
+    type: 'value',
+    name: 'Volume (mm)',
+    min: 0
+  },
+  series: [
+    {
+      name: 'Volume de chuva',
+      type: 'line',
+      smooth: true,
+      data: [386.7, 295, 211.5, 764.8, 497.9, 591.3, 388.5, 938.6, 465.6, 378.2],
+      itemStyle: {
+        color: '#2a9df4'
+      },
+      symbolSize: 8,
+      label: {
+        show: true,
+        position: 'top',
+        formatter: '{c} mm'
+      },
+      lineStyle: {
+        width: 3
+      }
+    }
+  ]
+};
